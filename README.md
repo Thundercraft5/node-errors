@@ -1,4 +1,4 @@
-**`node-errors`** is a library that streamlines the creation and management of message-coded errors.
+**`node-errors`** is a library that streamlines the creation and management of message-coded errors. *Has 0 dependencies!*
 
 # Usage
 Use `makeErrors(messages, errorMap, includeNativeCodes?)` to create coded error classes.
@@ -21,4 +21,7 @@ import { Error } from "@thundercraft5/node-errors";
 throw new Error("METHOD_NOT_IMPLEMENTED", Error, "test"); // Error [METHOD_NOT_IMPLEMENTED]: Method Error#test() is not implemented.
 ```
 
-Targeted for ESNext.
+**NOTES:**
+ - Targeted/Built for ESNext.
+ - ESM-Only.
+ - May be run in the browser with a bundler.
