@@ -20,3 +20,5 @@ import { Error } from "@thundercraft5/node-errors";
 
 throw new Error("METHOD_NOT_IMPLEMENTED", Error, "test"); // Error [METHOD_NOT_IMPLEMENTED]: Method Error#test() is not implemented.
 ```
+
+Targeted for ESNext.
