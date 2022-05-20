@@ -24,8 +24,7 @@
 		"isolatedModules": true
 	},
 	"include": [
-		"**/*.ts",
-		"**/*.tsx",
+		"src/**/*.ts",
 	],
 	"exclude": [
 		"node_modules",
