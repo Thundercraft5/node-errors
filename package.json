@@ -12,6 +12,9 @@
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"type": "module",
+	"engines": {
+		"node": "18x"
+	},
 	"scripts": {
 		"prepublish": "npm run build",
 		"build": "esbuild index.ts --outdir=dist --sourcemap --bundle --format=esm --target=esnext && tsc"
