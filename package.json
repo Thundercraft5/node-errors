@@ -1,0 +1,23 @@
+{
+	"name": "@thundercraft5/node-errors",
+	"version": "1.0.1",
+	"description": "A library that streamlines creation of custom error classes with message registries.",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"scripts": {
+		"prepublish": "npm run build",
+		"build": "esbuild index.ts --outdir=dist --sourcemap --bundle --format=esm --target=esnext && tsc"
+	},
+	"author": "Thundercraft5",
+	"license": "MIT",
+	"devDependencies": {
+		"esbuild-node-tsc": "1.8.5",
+		"glob-parent": "6.0.2",
+		"ts-node": "10.7.0",
+		"typescript": "4.8.0-dev.20220519"
+	},
+	"files": [
+		"dist"
+	]
+}
