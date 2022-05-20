@@ -1,6 +1,6 @@
 {
 	"name": "@thundercraft5/node-errors",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A library that streamlines creation of custom error classes with message registries.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",

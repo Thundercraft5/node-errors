@@ -1,4 +1,4 @@
-// utils/formatWordList.ts
+// src/utils/formatWordList.ts
 function formatWordList(list, and = false) {
   const last = list.pop(), lastWord = and ? "and" : "or";
   if (list.length > 1) {
@@ -8,7 +8,7 @@ function formatWordList(list, and = false) {
     return `${list.length == 1 ? `"${list[0]}" ${lastWord} ` : ""}"${last}"`;
 }
 
-// utils/formatErrorMessage.ts
+// src/utils/formatErrorMessage.ts
 function formatErrorMessage(messages2, code, ...formats) {
   if (!(code in messages2))
     throw new ReferenceError("INVALID_MESSAGE_CODE", code, formatWordList(Object.keys(messages2)));
@@ -18,7 +18,7 @@ function formatErrorMessage(messages2, code, ...formats) {
   return message;
 }
 
-// makeCodedError.ts
+// src/makeCodedError.ts
 function makeCodedError(messages2, Base) {
   if ("$$<Symbol>codedError" in Base)
     throw new TypeError("ERROR_CLASS_ALREADY_EXTENDED", Base);
@@ -67,7 +67,7 @@ function makeCodedError(messages2, Base) {
   };
 }
 
-// nativeMessages.ts
+// src/nativeMessages.ts
 var messages = {
   ERROR_CLASS_ALREADY_EXTENDED: (Class) => `Error class "${Class.name}" is already a coded error class.`,
   INVALID_MESSAGE_CODE: (code = "", validCodes = "") => `Error code "${code}" was not found in the provided messages registry.
@@ -77,7 +77,7 @@ List of valid codes: ${validCodes}`,
 };
 var nativeMessages_default = messages;
 
-// makeErrors.ts
+// src/makeErrors.ts
 function makeErrors(messages2, errors, includeNativeCodes = true) {
   if (includeNativeCodes)
     messages2 = { ...messages2, ...nativeMessages_default };
@@ -89,7 +89,7 @@ function makeErrors(messages2, errors, includeNativeCodes = true) {
   return ret;
 }
 
-// nativeErrors.ts
+// src/nativeErrors.ts
 var {
   TypeError,
   RangeError,
@@ -102,18 +102,18 @@ var {
   Error: globalThis.Error
 });
 
-// symbols.ts
+// src/symbols.ts
 var SymbolCodedErrorClass = Symbol("codedErrorClass");
 var SymbolCodedError = Symbol("codedError");
 var SymbolCode = Symbol("code");
 var SymbolRawMessage = Symbol("rawMessage");
 
-// utils/isCodedErrorClass.ts
+// src/utils/isCodedErrorClass.ts
 function isCodedErrorClass(ErrorClass) {
   return "$$<Symbol>codedErrorClass" in ErrorClass;
 }
 
-// utils/isCodedError.ts
+// src/utils/isCodedError.ts
 function isCodedError(errorObject) {
   return "$$<Symbol>code" in errorObject;
 }

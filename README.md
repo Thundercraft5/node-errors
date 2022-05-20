@@ -6,9 +6,9 @@ Use `makeErrors(messages, errorMap, includeNativeCodes?)` to create coded error 
 import makeErrors from "@thundercraft5/node-errors";
 
 const { MyError } = makeErrors({
-	"TEST_CODE": "This is a test message!",
+    "TEST_CODE": "This is a test message!",
 }, {
-	MyError: class MyError extends Error {},
+    MyError: class MyError extends Error {},
 }, /* set this parameter to `true` to include built-in codes in the available messages */ false);
 
 throw new MyError("TEST_CODE"); // MyError [TEST_CODE]: This is a test message!
