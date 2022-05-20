@@ -1,5 +1,14 @@
 {
 	"name": "@thundercraft5/node-errors",
+	"keywords": [
+		"error",
+		"exceptions",
+		"error-manager",
+		"manager",
+		"message",
+		"keys",
+		"formatter"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/thundercraft5/node-errors.git"
@@ -7,7 +16,7 @@
 	"bugs": {
 		"url": "https://github.com/thundercraft5/node-errors/issues"
 	},
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "A library that streamlines creation of custom error classes with message registries.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
