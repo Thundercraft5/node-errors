@@ -15,8 +15,8 @@ export default function formatErrorMessage<
 		? (messages[code] as MessageFormatter)(...formats)
 		: messages[code];
 
-	if (typeof messages[code] === "function" && messages[code].length > formats.length)
-		throw new RangeError("MESSAGE_CODE_MISSING_FORMATS", code, messages[code].length, formats.length);
+	if (typeof messages[code] === "function" && messages[code]!.length > formats.length)
+		throw new RangeError("MESSAGE_CODE_MISSING_FORMATS", code, messages[code]!.length, formats.length);
 
 	return message as string;
 }

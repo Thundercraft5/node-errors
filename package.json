@@ -31,7 +31,7 @@
 	"author": "Thundercraft5",
 	"license": "MIT",
 	"devDependencies": {
-		"esbuild-node-tsc": "1.8.5",
+		"@thundercraft5/tsconfig": "1.0.5",
 		"glob-parent": "6.0.2",
 		"ts-node": "10.8.1",
 		"typescript": "4.8.0-dev.20220519"

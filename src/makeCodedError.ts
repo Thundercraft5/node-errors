@@ -39,8 +39,8 @@ export default function makeCodedError<
 			super(formatErrorMessage(messages, code, ...formats));
 
 			if (typeof messages[code] !== "string")
-				// this[SymbolRawMessage] = messages[code]?.toString() ?? null;
-				this["$$<Symbol>rawMessage"] = messages[code]?.toString() ?? null;
+				// this[SymbolRawMessage] = messages[code]?.toString()!;
+				this["$$<Symbol>rawMessage"] = messages[code]?.toString()!;
 
 			this["$$<Symbol>code"] = code.toLocaleUpperCase();
 			// Object.defineProperty(this, SymbolCodedError, { value: true });

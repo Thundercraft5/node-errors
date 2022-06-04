@@ -1,28 +1,5 @@
 {
-	"compilerOptions": {
-		"outDir": "dist",
-		"target": "es2020",
-		"lib": [
-			"esnext"
-		],
-		"allowJs": true,
-		"sourceMap": true,
-		"preserveSymlinks": true,
-		"checkJs": true,
-		"skipLibCheck": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"declarationDir": "dist",
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"strictPropertyInitialization": false,
-		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "Node",
-		"jsx": "preserve",
-		"incremental": true,
-		"isolatedModules": true
-	},
+	"extends": "@thundercraft5/tsconfig/node18.tsconfig.json",
 	"include": [
 		"src/**/*.ts",
 	],
