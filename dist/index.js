@@ -40,7 +40,7 @@ function makeCodedError(messages2, Base) {
     constructor(code, ...formats) {
       super(formatErrorMessage(messages2, code, ...formats));
       if (typeof messages2[code] !== "string")
-        this["$$<Symbol>rawMessage"] = messages2[code]?.toString() ?? null;
+        this["$$<Symbol>rawMessage"] = messages2[code]?.toString();
       this["$$<Symbol>code"] = code.toLocaleUpperCase();
       Object.defineProperty(this, "$$<Symbol>codedError", { value: true });
     }
