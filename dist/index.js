@@ -27,7 +27,8 @@ function makeCodedError(messages2, Base) {
       return true;
     }
     static [Symbol.hasInstance](instance) {
-      return instance[Symbol.species] instanceof Base || instance[Symbol.species] === this;
+      let constructor = instance[Symbol.species] || instance.constructor;
+      return instance instanceof Base || constructor === this;
     }
     static {
       Object.defineProperty(this, "name", { value: Base.name });
