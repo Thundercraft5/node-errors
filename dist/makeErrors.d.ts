@@ -1,8 +1,8 @@
 import makeCodedError from "./makeCodedError";
-import { MessageMap } from './types';
+import { ErrorClass, MessageMap } from './types';
 import nativeMessages from "./nativeMessages";
 export declare type ErrorsDescriptor = {
-    [key: string]: ErrorConstructor;
+    [key: string]: ErrorClass;
 };
 export declare type ErrorMap<M extends MessageMap, E extends ErrorsDescriptor> = {
     [key in keyof E]?: ReturnType<typeof makeCodedError<M, E[key]>>;

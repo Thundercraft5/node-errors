@@ -1,10 +1,10 @@
 import makeCodedError from "./makeCodedError";
-import { MessageMap } from './types';
+import { ErrorClass, MessageMap } from './types';
 import nativeMessages from "./nativeMessages";
 import type { SymbolCode, SymbolCodedError, SymbolCodedErrorClass, SymbolRawMessage } from "./symbols";
 
 export type ErrorsDescriptor = {
-	[key: string]: ErrorConstructor;
+	[key: string]: ErrorClass;
 };
 
 export type ErrorMap<M extends MessageMap, E extends ErrorsDescriptor> = {

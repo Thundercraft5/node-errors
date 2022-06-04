@@ -6,7 +6,7 @@ import formatErrorMessage from "./utils/formatErrorMessage";
 
 export default function makeCodedError<
 	M extends MessageMap,
-	T extends typeof global.Error
+	T extends abstract new (...args: any[]) => Error,
 >(messages: M, Base: T) {
 	// if (SymbolCodedErrorClass in Base) throw new TypeError("ERROR_CLASS_ALREADY_EXTENDED", Base);
 	if ("$$<Symbol>codedError" in Base) throw new TypeError("ERROR_CLASS_ALREADY_EXTENDED", Base);
