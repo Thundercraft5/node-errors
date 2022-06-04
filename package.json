@@ -16,13 +16,13 @@
 	"bugs": {
 		"url": "https://github.com/thundercraft5/node-errors/issues"
 	},
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"description": "A library that streamlines creation of custom error classes with message registries.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"engines": {
-		"node": "18x"
+		"node": ">=18.x"
 	},
 	"scripts": {
 		"prepublish": "npm run build",
@@ -33,7 +33,7 @@
 	"devDependencies": {
 		"esbuild-node-tsc": "1.8.5",
 		"glob-parent": "6.0.2",
-		"ts-node": "10.7.0",
+		"ts-node": "10.8.1",
 		"typescript": "4.8.0-dev.20220519"
 	},
 	"files": [

@@ -15,6 +15,7 @@ export default function makeCodedError<M extends MessageMap, T extends typeof gl
         cause?: Error | undefined;
     };
     readonly "$$<Symbol>codedErrorClass": boolean;
+    [Symbol.hasInstance](instance: any): boolean;
     captureStackTrace(targetObject: object, constructorOpt?: Function | undefined): void;
     prepareStackTrace?: ((err: Error, stackTraces: NodeJS.CallSite[]) => any) | undefined;
     stackTraceLimit: number;

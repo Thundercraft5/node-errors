@@ -4,7 +4,7 @@ import nativeMessages from "./nativeMessages";
 import type { SymbolCode, SymbolCodedError, SymbolCodedErrorClass, SymbolRawMessage } from "./symbols";
 
 export type ErrorsDescriptor = {
-	[key: string]: typeof Error;
+	[key: string]: ErrorConstructor;
 };
 
 export type ErrorMap<M extends MessageMap, E extends ErrorsDescriptor> = {

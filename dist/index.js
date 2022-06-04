@@ -26,6 +26,9 @@ function makeCodedError(messages2, Base) {
     static get ["$$<Symbol>codedErrorClass"]() {
       return true;
     }
+    static [Symbol.hasInstance](instance) {
+      return instance[Symbol.species] instanceof Base;
+    }
     static {
       Object.defineProperty(this, "name", { value: Base.name });
     }
