@@ -16,6 +16,9 @@ export default function makeCodedError<
 	return class <Code extends MessageKeys<M>> extends Base {
 		// static get [SymbolCodedErrorClass]() { return true; }
 		static get ["$$<Symbol>codedErrorClass"]() { return true; }
+		static [Symbol.hasInstance](instance: any) {
+			return instance[Symbol.species] instanceof Base;
+		}
 
 		static {
 			Object.defineProperty(this, "name", { value: Base.name });
