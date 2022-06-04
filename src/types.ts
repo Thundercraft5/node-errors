@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type MessageFormatter = ((...args: any[]) => string);
-
+export type ErrorClass = abstract new (...args: any[]) => Error;
 export type MessageMap = {
 	[key: string]: MessageFormatter | string;
 };

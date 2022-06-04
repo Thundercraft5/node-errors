@@ -1,6 +1,5 @@
-/// <reference types="node" />
 import { FormattableMessageParams, MessageMap } from "./types";
-export default function makeCodedError<M extends MessageMap, T extends typeof global.Error>(messages: M, Base: T): {
+export default function makeCodedError<M extends MessageMap, T extends abstract new (...args: any[]) => Error>(messages: M, Base: T): {
     new <Code extends Extract<keyof M, string>>(code: Code, ...formats: Required<Parameters<Exclude<M[Code], string>>>): {
         "__#1@#message": string;
         readonly "$$<Symbol>codedError": true;
@@ -16,7 +15,4 @@ export default function makeCodedError<M extends MessageMap, T extends typeof gl
     };
     readonly "$$<Symbol>codedErrorClass": boolean;
     [Symbol.hasInstance](instance: any): boolean;
-    captureStackTrace(targetObject: object, constructorOpt?: Function | undefined): void;
-    prepareStackTrace?: ((err: Error, stackTraces: NodeJS.CallSite[]) => any) | undefined;
-    stackTraceLimit: number;
 } & T;
