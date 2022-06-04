@@ -16,7 +16,7 @@
 	"bugs": {
 		"url": "https://github.com/thundercraft5/node-errors/issues"
 	},
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "A library that streamlines creation of custom error classes with message registries.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
