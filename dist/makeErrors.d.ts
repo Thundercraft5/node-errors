@@ -9,3 +9,4 @@ export declare type ErrorMap<M extends MessageMap, E extends ErrorsDescriptor> =
 };
 export default function makeErrors<M extends MessageMap, E extends ErrorsDescriptor>(messages: M, errors: E, includeNativeCodes: true): Required<ErrorMap<M & typeof nativeMessages, E>>;
 export default function makeErrors<M extends MessageMap, E extends ErrorsDescriptor>(messages: M, errors: E): Required<ErrorMap<M, E>>;
+//# sourceMappingURL=makeErrors.d.ts.map

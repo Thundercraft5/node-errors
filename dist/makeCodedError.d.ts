@@ -10,9 +10,8 @@ export default function makeCodedError<M extends MessageMap, T extends abstract 
         getErrorName(): string | undefined;
         readonly [Symbol.species]: T;
         readonly [Symbol.toStringTag]: string | undefined;
-        stack?: string | undefined;
-        cause?: Error | undefined;
     };
     readonly "$$<Symbol>codedErrorClass": boolean;
     [Symbol.hasInstance](instance: any): boolean;
-} & T;
+};
+//# sourceMappingURL=makeCodedError.d.ts.map

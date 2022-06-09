@@ -1,10 +1,14 @@
 {
-	"extends": "@thundercraft5/tsconfig/node18.tsconfig.json",
+	"extends": "@thundercraft5/tsconfig/node18-decl.tsconfig.json",
+	"compilerOptions": {
+		"declarationDir": "dist"
+	},
 	"include": [
 		"src/**/*.ts",
 	],
 	"exclude": [
 		"node_modules",
-		"./dist/**"
+		"./dist/**",
+		"lib.es2022.error.d.ts"
 	]
 }

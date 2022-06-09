@@ -14,12 +14,10 @@ export declare const TypeError: {
         getErrorName(): string | undefined;
         readonly [Symbol.species]: TypeErrorConstructor;
         readonly [Symbol.toStringTag]: string | undefined;
-        stack?: string | undefined;
-        cause?: Error | undefined;
     };
     readonly "$$<Symbol>codedErrorClass": boolean;
     [Symbol.hasInstance](instance: any): boolean;
-} & TypeErrorConstructor, RangeError: {
+}, RangeError: {
     new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED">(code: Code, ...formats: Required<Parameters<Exclude<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
         INVALID_MESSAGE_CODE: (code?: string, validCodes?: string) => string;
@@ -35,12 +33,10 @@ export declare const TypeError: {
         getErrorName(): string | undefined;
         readonly [Symbol.species]: RangeErrorConstructor;
         readonly [Symbol.toStringTag]: string | undefined;
-        stack?: string | undefined;
-        cause?: Error | undefined;
     };
     readonly "$$<Symbol>codedErrorClass": boolean;
     [Symbol.hasInstance](instance: any): boolean;
-} & RangeErrorConstructor, ReferenceError: {
+}, ReferenceError: {
     new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED">(code: Code, ...formats: Required<Parameters<Exclude<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
         INVALID_MESSAGE_CODE: (code?: string, validCodes?: string) => string;
@@ -56,12 +52,10 @@ export declare const TypeError: {
         getErrorName(): string | undefined;
         readonly [Symbol.species]: ReferenceErrorConstructor;
         readonly [Symbol.toStringTag]: string | undefined;
-        stack?: string | undefined;
-        cause?: Error | undefined;
     };
     readonly "$$<Symbol>codedErrorClass": boolean;
     [Symbol.hasInstance](instance: any): boolean;
-} & ReferenceErrorConstructor, Error: {
+}, Error: {
     new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED">(code: Code, ...formats: Required<Parameters<Exclude<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
         INVALID_MESSAGE_CODE: (code?: string, validCodes?: string) => string;
@@ -77,9 +71,8 @@ export declare const TypeError: {
         getErrorName(): string | undefined;
         readonly [Symbol.species]: ErrorConstructor;
         readonly [Symbol.toStringTag]: string | undefined;
-        stack?: string | undefined;
-        cause?: Error | undefined;
     };
     readonly "$$<Symbol>codedErrorClass": boolean;
     [Symbol.hasInstance](instance: any): boolean;
-} & ErrorConstructor;
+};
+//# sourceMappingURL=nativeErrors.d.ts.map

@@ -5,3 +5,5 @@ export declare type MessageMap = {
 };
 export declare type FormattableMessageParams<M extends MessageMap, Code extends string> = Required<Parameters<Exclude<M[Code], string>>>;
 export declare type MessageKeys<M extends MessageMap> = Extract<keyof M, string>;
+export declare type ConstructorReturnType<T extends abstract new (...args: any[]) => any> = T extends abstract new (...args: any[]) => infer R ? R : never;
+//# sourceMappingURL=types.d.ts.map

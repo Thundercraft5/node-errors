@@ -1,5 +1,5 @@
 import { TypeError } from "./nativeErrors";
-import { FormattableMessageParams, MessageKeys, MessageMap } from "./types";
+import { ConstructorReturnType, FormattableMessageParams, MessageKeys, MessageMap } from "./types";
 import { SymbolCode, SymbolCodedError, SymbolCodedErrorClass, SymbolRawMessage } from "./symbols";
 
 import formatErrorMessage from "./utils/formatErrorMessage";
@@ -13,11 +13,13 @@ export default function makeCodedError<
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore - Bug
-	return class <Code extends MessageKeys<M>> extends Base {
+	// eslint-disable-next-line @typescript-eslint/no-extra-parens
+	return class <Code extends MessageKeys<M>> extends (Base as Omit<T, "constructor">) {
 		// static get [SymbolCodedErrorClass]() { return true; }
 		static get ["$$<Symbol>codedErrorClass"]() { return true; }
 		static [Symbol.hasInstance](instance: any) {
-			let constructor = instance[Symbol.species] || instance.constructor;
+			const constructor = instance[Symbol.species] || instance.constructor;
+
 			return instance instanceof Base || constructor === this;
 		}
 
@@ -35,6 +37,7 @@ export default function makeCodedError<
 		readonly ["$$<Symbol>code"]: string;
 		readonly ["$$<Symbol>rawMessage"]: string;
 
+		constructor(code: Code, ...formats: FormattableMessageParams<M, Code>);
 		constructor(code: Code, ...formats: FormattableMessageParams<M, Code>) {
 			super(formatErrorMessage(messages, code, ...formats));
 
