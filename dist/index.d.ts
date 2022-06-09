@@ -5,3 +5,4 @@ export { default as makeErrors, default } from "./makeErrors";
 export { default as messages } from "./nativeMessages";
 export { default as isCodedErrorClass } from "./utils/isCodedErrorClass";
 export { default as isCodedError } from "./utils/isCodedError";
+//# sourceMappingURL=index.d.ts.map

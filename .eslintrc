@@ -1,0 +1,5 @@
+{
+	"extends": [
+		"plugin:@thundercraft5/typescript"
+	]
+}

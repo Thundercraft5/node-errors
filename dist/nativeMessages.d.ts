@@ -6,3 +6,4 @@ declare const messages: {
     METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
 };
 export default messages;
+//# sourceMappingURL=nativeMessages.d.ts.map

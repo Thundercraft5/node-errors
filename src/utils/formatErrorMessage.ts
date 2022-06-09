@@ -11,7 +11,7 @@ export default function formatErrorMessage<
 		throw new ReferenceError("INVALID_MESSAGE_CODE", code, formatWordList(Object.keys(messages)));
 
 	const message = typeof messages[code] === "function"
-		// eslint-disable-next-line
+
 		? (messages[code] as MessageFormatter)(...formats)
 		: messages[code];
 
