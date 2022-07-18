@@ -1,9 +1,16 @@
 import { TypeError } from "./nativeErrors";
-import { ConstructorReturnType, FormattableMessageParams, MessageKeys, MessageMap } from "./types";
 import { SymbolCode, SymbolCodedError, SymbolCodedErrorClass, SymbolRawMessage } from "./symbols";
 
+import { ConstructorReturnType } from "./types";
 import formatErrorMessage from "./utils/formatErrorMessage";
+import type { FormattableMessageParams, MessageDescriptor,MessageKeys, MessageMap } from "./types";
 
+type OmitCallSignature<T> =
+	T extends new (...args: infer R) => infer S ? new (...args: R) => S & { [K in keyof T]: T[K] } : { [K in keyof T]: T[K] };
+
+type OmitConstructorSignature<T> =
+	T extends (...args: infer R) => infer S ? (...args: R) => S & { [K in keyof T]: T[K] } : { [K in keyof T]: T[K] };
+type Map<T> = { [K in keyof T]: T[K] };
 export default function makeCodedError<
 	M extends MessageMap,
 	T extends abstract new (...args: any[]) => Error,
@@ -11,12 +18,11 @@ export default function makeCodedError<
 	// if (SymbolCodedErrorClass in Base) throw new TypeError("ERROR_CLASS_ALREADY_EXTENDED", Base);
 	if ("$$<Symbol>codedError" in Base) throw new TypeError("ERROR_CLASS_ALREADY_EXTENDED", Base);
 
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore - Bug
-	// eslint-disable-next-line @typescript-eslint/no-extra-parens
-	return class <Code extends MessageKeys<M>> extends (Base as Omit<T, "constructor">) {
+
+	// @ts-expect-error
+	class $0 <Code extends MessageKeys<M>> extends Base {
 		// static get [SymbolCodedErrorClass]() { return true; }
-		static get ["$$<Symbol>codedErrorClass"]() { return true; }
+		static readonly ["$$<Symbol>codedErrorClass"] = true;
 		static [Symbol.hasInstance](instance: any) {
 			const constructor = instance[Symbol.species] || instance.constructor;
 
@@ -51,7 +57,7 @@ export default function makeCodedError<
 		}
 
 		get name() {
-			return `${ this.getErrorName() }${ this["$$<Symbol>code"] ? ` [${ this["$$<Symbol>code"] }]` : "" }`;
+			return `${ Base.name }${ this["$$<Symbol>code"] ? ` [${ this["$$<Symbol>code"] }]` : "" }`;
 		}
 
 		get message() {
@@ -65,19 +71,11 @@ export default function makeCodedError<
 		get [Symbol.species]() { return Base; }
 
 		get [Symbol.toStringTag]() {
-			return this.getErrorName();
+			return Base.name;
 		}
+	}
 
-		getErrorName() {
-			const names = [];
-			let cur = this.constructor;
-
-			while (cur) {
-				names.push(cur.name);
-				cur = Object.getPrototypeOf(cur);
-			}
-
-			return names.find(name => name != "CodedError");
-		}
-	};
+	return $0 as any as (Map<typeof $0>
+		& Omit<typeof Base, "prototype">
+		& (new <Code extends MessageKeys<M>> (code: Code, ...formats: FormattableMessageParams<M, Code>) => $0<Code> & ConstructorReturnType<typeof Base>));
 }

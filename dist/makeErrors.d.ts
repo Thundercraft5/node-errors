@@ -1,12 +1,14 @@
 import makeCodedError from "./makeCodedError";
-import { ErrorClass, MessageMap } from './types';
 import nativeMessages from "./nativeMessages";
-export declare type ErrorsDescriptor = {
-    [key: string]: ErrorClass;
+import { MessageMap, ErrorsDescriptor, Message } from "./types";
+export declare type ErrorMap<M extends MessageDescriptor<M, E>, E extends ErrorsDescriptor> = {
+    [K in keyof E]?: ReturnType<typeof makeCodedError<M[K] & Omit<M, keyof E>, E[K]>>;
 };
-export declare type ErrorMap<M extends MessageMap, E extends ErrorsDescriptor> = {
-    [key in keyof E]?: ReturnType<typeof makeCodedError<M, E[key]>>;
+export declare type MessageDescriptor<M extends MessageMap, E extends ErrorsDescriptor> = {
+    [K in Exclude<keyof M, keyof E>]: Message;
+} & {
+    [K in keyof E]?: MessageMap;
 };
-export default function makeErrors<M extends MessageMap, E extends ErrorsDescriptor>(messages: M, errors: E, includeNativeCodes: true): Required<ErrorMap<M & typeof nativeMessages, E>>;
-export default function makeErrors<M extends MessageMap, E extends ErrorsDescriptor>(messages: M, errors: E): Required<ErrorMap<M, E>>;
+export default function makeErrors<M extends MessageDescriptor<M, E>, E extends ErrorsDescriptor>(messages: M, errors: E, includeNativeCodes: true): Required<ErrorMap<M & typeof nativeMessages, E>>;
+export default function makeErrors<M extends MessageDescriptor<M, E>, E extends ErrorsDescriptor>(messages: M, errors: E): Required<ErrorMap<M, E>>;
 //# sourceMappingURL=makeErrors.d.ts.map
