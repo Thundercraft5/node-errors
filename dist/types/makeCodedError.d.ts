@@ -1,5 +1,4 @@
-import { ConstructorReturnType } from "./types";
-import type { FormattableMessageParams, MessageMap } from "./types";
+import type { ConstructorReturnType, FormattableMessageParams, MessageMap } from "./types";
 declare type Map<T> = {
     [K in keyof T]: T[K];
 };

@@ -2,7 +2,7 @@
 	"extends": "@thundercraft5/tsconfig/node18-decl.tsconfig.json",
 	"compilerOptions": {
 		"module": "ESNext",
-		"declarationDir": "dist"
+		"declarationDir": "dist/types"
 	},
 	"include": [
 		"src/**/*.ts",

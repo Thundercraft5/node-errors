@@ -1,9 +1,8 @@
 import { TypeError } from "./nativeErrors";
 import { SymbolCode, SymbolCodedError, SymbolCodedErrorClass, SymbolRawMessage } from "./symbols";
+import type { ConstructorReturnType , FormattableMessageParams, MessageDescriptor, MessageKeys, MessageMap } from "./types";
 
-import { ConstructorReturnType } from "./types";
 import formatErrorMessage from "./utils/formatErrorMessage";
-import type { FormattableMessageParams, MessageDescriptor,MessageKeys, MessageMap } from "./types";
 
 type OmitCallSignature<T> =
 	T extends new (...args: infer R) => infer S ? new (...args: R) => S & { [K in keyof T]: T[K] } : { [K in keyof T]: T[K] };
@@ -11,6 +10,8 @@ type OmitCallSignature<T> =
 type OmitConstructorSignature<T> =
 	T extends (...args: infer R) => infer S ? (...args: R) => S & { [K in keyof T]: T[K] } : { [K in keyof T]: T[K] };
 type Map<T> = { [K in keyof T]: T[K] };
+
+
 export default function makeCodedError<
 	M extends MessageMap,
 	T extends abstract new (...args: any[]) => Error,
@@ -76,6 +77,6 @@ export default function makeCodedError<
 	}
 
 	return $0 as any as (Map<typeof $0>
-		& Omit<typeof Base, "prototype">
-		& (new <Code extends MessageKeys<M>> (code: Code, ...formats: FormattableMessageParams<M, Code>) => $0<Code> & ConstructorReturnType<typeof Base>));
+	& Omit<typeof Base, "prototype">
+	& (new <Code extends MessageKeys<M>> (code: Code, ...formats: FormattableMessageParams<M, Code>) => $0<Code> & ConstructorReturnType<typeof Base>));
 }

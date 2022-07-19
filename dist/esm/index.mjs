@@ -20,7 +20,7 @@ function omit(object, ...keys) {
 }
 
 // src/makeErrors.ts
-function makeErrors(messages2, errors, includeNativeCodes = true) {
+function makeErrors(messages2 = {}, errors = {}, includeNativeCodes = true) {
   if (includeNativeCodes)
     messages2 = { ...messages2, ...nativeMessages_default };
   const ret = {}, entries2 = Object.entries(errors);
@@ -137,4 +137,4 @@ export {
   makeErrors,
   nativeMessages_default as messages
 };
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.mjs.map

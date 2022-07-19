@@ -1,4 +1,3 @@
-
 export const
 	SymbolCodedErrorClass = Symbol("codedErrorClass"),
 	SymbolCodedError = Symbol("codedError"),

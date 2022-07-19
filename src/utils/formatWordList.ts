@@ -6,6 +6,5 @@ export default function formatWordList(list: string[], and = false) {
 		const commaSeparated = list.map((s, i) => `${ i % 5 === 0 && i ? "\n" : "" }"${ s }"`);
 
 		return `${ commaSeparated.join(", ") }, ${ lastWord } "${ last }"`;
-	} else
-		return `${ list.length === 1 ? `"${ list[0] }" ${ lastWord } ` : "" }"${ last }"`;
+	} else return `${ list.length === 1 ? `"${ list[0] }" ${ lastWord } ` : "" }"${ last }"`;
 }
