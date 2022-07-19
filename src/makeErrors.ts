@@ -27,7 +27,7 @@ export default function makeErrors<
 export default function makeErrors<
 	M extends MessageDescriptor<M, E>,
 	E extends ErrorsDescriptor,
->(messages: M, errors: E, includeNativeCodes = true) {
+>(messages: M = {} as M, errors: E = {} as E, includeNativeCodes = true) {
 	if (includeNativeCodes) messages = { ...messages, ...nativeMessages };
 
 	const ret: ErrorMap<M | (M & typeof nativeMessages), E> = {},
