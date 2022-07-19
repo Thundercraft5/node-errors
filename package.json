@@ -1,5 +1,28 @@
 {
 	"name": "@thundercraft5/node-errors",
+	"author": "Thundercraft5",
+	"bugs": {
+		"url": "https://github.com/thundercraft5/node-errors/issues"
+	},
+	"description": "A library that streamlines creation of custom error classes with message registries.",
+	"devDependencies": {
+		"@thundercraft5/eslint-plugin": "file:../eslint-plugin",
+		"@thundercraft5/tsconfig": "file:../tsconfig",
+		"del-cli": "4.0.0",
+		"json": "11.0.0",
+		"ts-node": "10.9.1",
+		"typescript": "4.8.0-dev.20220519"
+	},
+	"exports": {
+		".": {
+			"import": "./dist/esm/index.mjs",
+			"require": "./dist/cjs/index.cjs",
+			"types": "./dist/types/index.d.ts"
+		}
+	},
+	"files": [
+		"dist"
+	],
 	"keywords": [
 		"error",
 		"exceptions",
@@ -9,37 +32,22 @@
 		"keys",
 		"formatter"
 	],
+	"license": "MIT",
+	"main": "./dist/cjs/index.cjs",
+	"module": "./dist/esm/index.mjs",
+	"types": "./dist/types/index.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/thundercraft5/node-errors.git"
 	},
-	"bugs": {
-		"url": "https://github.com/thundercraft5/node-errors/issues"
-	},
-	"version": "1.1.0",
-	"description": "A library that streamlines creation of custom error classes with message registries.",
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"type": "module",
-	"engines": {
-		"node": ">=18.x"
-	},
 	"scripts": {
-		"lint": "eslint ./src/** --fix",
-		"prepublish": "npm run lint && npm run build",
-		"build": "del-cli ./dist && esbuild index.ts --outdir=dist --sourcemap --bundle --format=esm --target=esnext && tsc"
+		"build": "del-cli ./dist && npm run build:esm && npm run build:cjs && tsc -b -f",
+		"build:cjs": "esbuild src --outfile=dist/cjs/index.cjs --sourcemap --bundle --format=cjs --target=esnext",
+		"build:esm": "esbuild src --outfile=dist/esm/index.mjs --sourcemap --bundle --format=esm --target=esnext",
+		"lint": "eslint ./src/** --quiet --fix || exit 0",
+		"ci": "npm run build && npm run build",
+		"prepublishOnly": "npm run ci"
 	},
-	"author": "Thundercraft5",
-	"license": "MIT",
-	"devDependencies": {
-		"@thundercraft5/eslint-plugin": "file:../eslint-plugin",
-		"@thundercraft5/tsconfig": "file:../tsconfig",
-		"del-cli": "4.0.1",
-		"glob-parent": "6.0.2",
-		"ts-node": "10.8.1",
-		"typescript": "4.8.0-dev.20220519"
-	},
-	"files": [
-		"dist"
-	]
+	"type": "module",
+	"version": "1.1.1"
 }
