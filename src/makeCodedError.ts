@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { TypeError } from "./nativeErrors";
 import { SymbolCode, SymbolCodedError, SymbolCodedErrorClass, SymbolRawMessage } from "./symbols";
-
+import type { ConstructorReturnType , FormattableMessageParams, MessageDescriptor, MessageKeys, MessageMap } from "./types";
 import { indent } from "./utils";
 import formatErrorMessage from "./utils/formatErrorMessage";
-import type { ConstructorReturnType , FormattableMessageParams, MessageDescriptor, MessageKeys, MessageMap } from "./types";
 
 type OmitCallSignature<T> =
 	T extends new (...args: infer R) => infer S ? new (...args: R) => S & { [K in keyof T]: T[K] } : { [K in keyof T]: T[K] };
@@ -66,8 +65,6 @@ export default function makeCodedError<
 					? args.at(-1)
 					: {}) as Options;
 
-			console.log(Object.hasOwn(args.at(-1)! as any, "cause"));
-
 			super();
 
 			// @ts-expect-error
@@ -84,7 +81,6 @@ export default function makeCodedError<
 			this.code = code.toLocaleUpperCase() as Code;
 			// Object.defineProperty(this, SymbolCodedError, { value: true });
 			Object.defineProperty(this, "$$<Symbol>isCodedError", { value: true });
-			console.log(this["$$<Symbol>isCodedError"]);
 
 			Object.defineProperties(this, {
 				name: {
