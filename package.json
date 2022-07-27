@@ -45,7 +45,7 @@
 		"build:cjs": "esbuild src --outfile=dist/cjs/index.cjs --sourcemap --bundle --format=cjs --target=esnext",
 		"build:esm": "esbuild src --outfile=dist/esm/index.mjs --sourcemap --bundle --format=esm --target=esnext",
 		"lint": "eslint ./src/** --quiet --fix || exit 0",
-		"ci": "npm run build && npm run build",
+		"ci": "npm run build",
 		"prepublishOnly": "npm run ci"
 	},
 	"type": "module",

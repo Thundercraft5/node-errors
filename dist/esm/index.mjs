@@ -1,10 +1,49 @@
-// src/nativeMessages.ts
+// src/nativeMessages/toRepresentation.ts
+var toString = (v) => Object.prototype.toString.call(v);
+function toRepresentation(object, includeType = false) {
+  let valueRepresentation = "";
+  switch (typeof object) {
+    case "string":
+      {
+        valueRepresentation = `"${object.slice(1, 100)} ${object.length >= 100 ? "<...>" : ""}"`;
+      }
+      break;
+    case "bigint":
+      valueRepresentation = `${String(object)}n`;
+      break;
+    case "symbol":
+    case "boolean":
+    case "undefined":
+    case "function":
+    case "number":
+      valueRepresentation = String(object);
+      break;
+    case "object": {
+      if (object == null)
+        valueRepresentation = String(object);
+      else {
+        const constructorName = Reflect.getPrototypeOf(object)?.constructor.name, toStringName = toString(object).slice(8, -1);
+        valueRepresentation = toStringName in globalThis && toStringName !== "Object" ? toString(object) : `#<${constructorName}>`;
+      }
+      break;
+    }
+    default:
+      throw new TypeError();
+  }
+  return `${includeType && object !== "undefined" ? `${typeof object} ` : ""}${valueRepresentation}`;
+}
+
+// src/nativeMessages/index.ts
 var messages = {
   ERROR_CLASS_ALREADY_EXTENDED: (Class) => `Error class "${Class.name}" is already a coded error class.`,
   INVALID_MESSAGE_CODE: (code = "", validCodes = "") => `Error code "${code}" was not found in the provided messages registry.
 List of valid codes: ${validCodes}`,
   MESSAGE_CODE_MISSING_FORMATS: (code = "", required = 0, received = 0) => `Message code "${code}" expects at least ${required} format arguments, got ${received} instead`,
-  METHOD_NOT_IMPLEMENTED: (Class, name = "") => `Method ${Class.name}#${name}() is not implemented.`
+  METHOD_NOT_IMPLEMENTED: (Class, name = "") => `Method ${Class.name}#${name}() is not implemented.`,
+  READONLY_PROPERTY_SET: (object, key) => `Cannot assign to read only property '${String(key)}' of object '${toRepresentation(object, false)}'`,
+  OBJECT_NOT_EXTENSIBLE: (object, key) => `Cannot add property '${String(key)}', object '${toRepresentation(object)} is not extensible'`,
+  CANNOT_ADD_OBJECT_PROPERTY: (value, key) => `Cannot add property '${String(key)}' on ${typeof value} '${toRepresentation(value)}'`,
+  TEST_MESSAGE: () => "This is a test message."
 };
 var nativeMessages_default = messages;
 
@@ -32,7 +71,7 @@ function makeErrors(messages2 = {}, errors = {}, includeNativeCodes = true) {
 
 // src/nativeErrors.ts
 var {
-  TypeError,
+  TypeError: TypeError2,
   RangeError,
   ReferenceError,
   Error
@@ -65,10 +104,10 @@ function formatErrorMessage(messages2, code, ...formats) {
 
 // src/makeCodedError.ts
 function makeCodedError(messages2, Base) {
-  if ("$$<Symbol>codedError" in Base)
-    throw new TypeError("ERROR_CLASS_ALREADY_EXTENDED", Base);
+  if ("$$<Symbol>isCodedError" in Base)
+    throw new TypeError2("ERROR_CLASS_ALREADY_EXTENDED", Base);
   class $0 extends Base {
-    static ["$$<Symbol>codedErrorClass"] = true;
+    static ["$$<Symbol>isCodedErrorClass"] = true;
     static [Symbol.hasInstance](instance) {
       const constructor = instance[Symbol.species] || instance.constructor;
       return instance instanceof Base || constructor === this;
@@ -76,25 +115,56 @@ function makeCodedError(messages2, Base) {
     static {
       Object.defineProperty(this, "name", { value: Base.name });
     }
-    #message = "";
-    ["$$<Symbol>codedError"];
-    ["$$<Symbol>code"];
-    ["$$<Symbol>rawMessage"];
-    constructor(code, ...formats) {
-      super(formatErrorMessage(messages2, code, ...formats));
-      if (typeof messages2[code] !== "string")
-        this["$$<Symbol>rawMessage"] = messages2[code]?.toString();
-      this["$$<Symbol>code"] = code.toLocaleUpperCase();
-      Object.defineProperty(this, "$$<Symbol>codedError", { value: true });
+    static #lookupGetter(instance, key) {
+      return Object.getOwnPropertyDescriptors(instance)[key].get;
     }
-    get name() {
-      return `${Base.name}${this["$$<Symbol>code"] ? ` [${this["$$<Symbol>code"]}]` : ""}`;
+    #message = "";
+    #stackTrace = "";
+    #cause;
+    ["$$<Symbol>isCodedError"];
+    ["code"];
+    ["rawMessage"];
+    constructor(code, ...args) {
+      const formats = Object.hasOwn(args.at(-1) ?? {}, "cause") ? args.slice(0, -1) : args, options = Object.hasOwn(args.at(-1) ?? {}, "cause") ? args.at(-1) : {};
+      console.log(Object.hasOwn(args.at(-1), "cause"));
+      super();
+      delete this["$$<Symbol>isCodedError"];
+      this.#message = formatErrorMessage(messages2, code, ...formats);
+      this.#stackTrace = this.stack.split("\n").slice(1).join("\n");
+      this.#cause = options.cause;
+      if (typeof messages2[code] !== "string")
+        this.rawMessage = messages2[code]?.toString();
+      this.code = code.toLocaleUpperCase();
+      Object.defineProperty(this, "$$<Symbol>isCodedError", { value: true });
+      console.log(this["$$<Symbol>isCodedError"]);
+      Object.defineProperties(this, {
+        name: {
+          get: () => this.#name
+        },
+        stack: {
+          get: () => this.#stack
+        }
+      });
+      if (Object.hasOwn(options, "cause"))
+        Object.defineProperty(this, "cause", {
+          value: options.cause,
+          enumerable: false
+        });
+      else
+        delete this.cause;
+    }
+    get #name() {
+      return `${Base.name}${this.code ? ` [${this.code}]` : ""}`;
+    }
+    get #stack() {
+      return `${this.name}: ${this.message}
+${this.#stackTrace}`;
     }
     get message() {
-      return !this.#message ? "" : this.#message;
+      return this.#message;
     }
-    set message(value) {
-      this.#message = value;
+    get name() {
+      return this.#name;
     }
     get [Symbol.species]() {
       return Base;
@@ -114,12 +184,20 @@ var SymbolRawMessage = Symbol("rawMessage");
 
 // src/utils/isCodedError.ts
 function isCodedError(errorObject) {
-  return "$$<Symbol>code" in errorObject;
+  try {
+    return errorObject?.["$$<Symbol>isCodedError"];
+  } catch {
+    return false;
+  }
 }
 
 // src/utils/isCodedErrorClass.ts
 function isCodedErrorClass(ErrorClass) {
-  return "$$<Symbol>codedErrorClass" in ErrorClass;
+  try {
+    return ErrorClass?.["$$<Symbol>isCodedErrorClass"];
+  } catch {
+    return false;
+  }
 }
 export {
   Error,
@@ -129,7 +207,7 @@ export {
   SymbolCodedError,
   SymbolCodedErrorClass,
   SymbolRawMessage,
-  TypeError,
+  TypeError2 as TypeError,
   makeErrors as default,
   isCodedError,
   isCodedErrorClass,
