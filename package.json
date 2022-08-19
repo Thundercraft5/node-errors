@@ -42,7 +42,7 @@
 		"url": "https://github.com/thundercraft5/node-errors.git"
 	},
 	"scripts": {
-		"build": " && npm run build:esm && npm run build:cjs && tsc -b -f",
+		"build": "del-cli ./dist && npm run build:esm && npm run build:cjs && tsc -b -f",
 		"build:cjs": "esbuild src --outfile=dist/cjs/index.cjs --sourcemap --bundle --format=cjs --target=esnext",
 		"build:esm": "esbuild src --outfile=dist/esm/index.mjs --sourcemap --bundle --format=esm --target=esnext",
 		"lint": "eslint ./src/** --quiet --fix || exit 0",
