@@ -1,3 +1,4 @@
+"use strict";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -81,7 +82,7 @@ List of valid codes: ${validCodes}`,
   READONLY_PROPERTY_SET: (object, key) => `Cannot assign to read only property '${String(key)}' of object '${toRepresentation(object, false)}'`,
   OBJECT_NOT_EXTENSIBLE: (object, key) => `Cannot add property '${String(key)}', object '${toRepresentation(object)} is not extensible'`,
   CANNOT_ADD_OBJECT_PROPERTY: (value, key) => `Cannot add property '${String(key)}' on ${typeof value} '${toRepresentation(value)}'`,
-  TEST_MESSAGE: () => "This is a test message."
+  VALUE_OUT_OF_RANGE: (value, min, max) => `Value "${value} is out of range. Values must be in the range of "${min}" ti "${max}"`
 };
 var nativeMessages_default = messages;
 
@@ -164,7 +165,6 @@ function makeCodedError(messages2, Base) {
     ["rawMessage"];
     constructor(code, ...args) {
       const formats = Object.hasOwn(args.at(-1) ?? {}, "cause") ? args.slice(0, -1) : args, options = Object.hasOwn(args.at(-1) ?? {}, "cause") ? args.at(-1) : {};
-      console.log(Object.hasOwn(args.at(-1), "cause"));
       super();
       delete this["$$<Symbol>isCodedError"];
       this.#message = formatErrorMessage(messages2, code, ...formats);
@@ -174,7 +174,6 @@ function makeCodedError(messages2, Base) {
         this.rawMessage = messages2[code]?.toString();
       this.code = code.toLocaleUpperCase();
       Object.defineProperty(this, "$$<Symbol>isCodedError", { value: true });
-      console.log(this["$$<Symbol>isCodedError"]);
       Object.defineProperties(this, {
         name: {
           get: () => this.#name
