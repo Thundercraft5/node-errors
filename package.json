@@ -8,11 +8,11 @@
 	"devDependencies": {
 		"@thundercraft5/eslint-plugin": "file:../eslint-plugin",
 		"@thundercraft5/tsconfig": "file:../tsconfig",
-		"del-cli": "4.0.0",
+		"del-cli": "5.0.0",
 		"json": "11.0.0",
 		"pre-commit": "1.2.2",
 		"ts-node": "10.9.1",
-		"typescript": "4.8.0-dev.20220519"
+		"typescript": "4.9.0-dev.20220818"
 	},
 	"exports": {
 		".": {
@@ -42,7 +42,7 @@
 		"url": "https://github.com/thundercraft5/node-errors.git"
 	},
 	"scripts": {
-		"build": "del \"./dist\" && npm run build:esm && npm run build:cjs && tsc -b -f",
+		"build": " && npm run build:esm && npm run build:cjs && tsc -b -f",
 		"build:cjs": "esbuild src --outfile=dist/cjs/index.cjs --sourcemap --bundle --format=cjs --target=esnext",
 		"build:esm": "esbuild src --outfile=dist/esm/index.mjs --sourcemap --bundle --format=esm --target=esnext",
 		"lint": "eslint ./src/** --quiet --fix || exit 0",
