@@ -1,5 +1,5 @@
-import toRepresentation from "./toRepresentation";
 import type { ErrorClass } from "..";
+import toRepresentation from "./toRepresentation";
 
 const messages = {
 	// Internal error messages
@@ -12,7 +12,7 @@ const messages = {
 	READONLY_PROPERTY_SET: (object: any, key: number | string | symbol) => `Cannot assign to read only property '${ String(key) }' of object '${ toRepresentation(object, false) }'`,
 	OBJECT_NOT_EXTENSIBLE: (object: any, key: number | string | symbol) => `Cannot add property '${ String(key) }', object '${ toRepresentation(object) } is not extensible'`,
 	CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: number | string | symbol) => `Cannot add property '${ String(key) }' on ${ typeof value } '${ toRepresentation(value) }'`,
-	TEST_MESSAGE: () => "This is a test message.",
+	VALUE_OUT_OF_RANGE: (value: bigint | number, min: bigint | number, max: bigint | number) => `Value "${ value } is out of range. Values must be in the range of "${min}" ti "${max}"`,
 };
 
 export default messages;
