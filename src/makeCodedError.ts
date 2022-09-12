@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { TypeError } from "./nativeErrors";
 import { SymbolCode, SymbolCodedError, SymbolCodedErrorClass, SymbolRawMessage } from "./symbols";
-import type { ConstructorReturnType , FormattableMessageParams, MessageDescriptor, MessageKeys, MessageMap } from "./types";
+
 import { indent } from "./utils";
 import formatErrorMessage from "./utils/formatErrorMessage";
+import type { ConstructorReturnType , FormattableMessageParams, MessageDescriptor, MessageKeys, MessageMap } from "./types";
 
 type OmitCallSignature<T> =
 	T extends new (...args: infer R) => infer S ? new (...args: R) => S & { [K in keyof T]: T[K] } : { [K in keyof T]: T[K] };
