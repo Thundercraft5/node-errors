@@ -6,11 +6,8 @@
 	},
 	"include": [
 		"**/*.ts",
-		"**/*.cts"
 	],
 	"exclude": [
 		"node_modules",
-		"./dist/**",
-		"lib.es2022.error.d.ts"
 	]
 }
