@@ -80,6 +80,7 @@ List of valid codes: ${validCodes}`,
   MESSAGE_CODE_MISSING_FORMATS: (code = "", required = 0, received = 0) => `Message code "${code}" expects at least ${required} format arguments, got ${received} instead`,
   METHOD_NOT_IMPLEMENTED: (Class, name = "") => `Method ${Class.name}#${name}() is not implemented.`,
   READONLY_PROPERTY_SET: (object, key) => `Cannot assign to read only property '${String(key)}' of object '${toRepresentation(object, false)}'`,
+  READONLY_PROPERTY_DELETE: (object, key) => `Cannot delete read only property '${String(key)}' of object '${toRepresentation(object, false)}'`,
   OBJECT_NOT_EXTENSIBLE: (object, key) => `Cannot add property '${String(key)}', object '${toRepresentation(object)} is not extensible'`,
   CANNOT_ADD_OBJECT_PROPERTY: (value, key) => `Cannot add property '${String(key)}' on ${typeof value} '${toRepresentation(value)}'`,
   VALUE_OUT_OF_RANGE: (value, min, max) => `Value "${value} is out of range. Values must be in the range of "${min}" to "${max}".`
