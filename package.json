@@ -50,7 +50,8 @@
 		"build:esm": "esbuild src --outfile=dist/esm/index.mjs --sourcemap --bundle --format=esm --target=esnext",
 		"lint": "eslint ./src/** --quiet --fix || exit 0",
 		"ci": "npm run lint && npm run build",
-		"prepublishOnly": "npm run ci"
+		"prepublishOnly": "npm run ci",
+		"prepare": "husky install"
 	},
 	"husky": {
 		"hooks": {
