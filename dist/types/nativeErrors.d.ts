@@ -22,7 +22,7 @@ export declare const TypeError: {
     prepareStackTrace?: ((err: Error, stackTraces: NodeJS.CallSite[]) => any) | undefined;
     stackTraceLimit: number;
 } & Omit<TypeErrorConstructor, "prototype"> & Error & {
-    new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options extends Omit<ErrorOptions, "cause"> & {
+    new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "READONLY_PROPERTY_DELETE" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options extends Omit<ErrorOptions, "cause"> & {
         cause?: Error;
     } = {}>(code: Code, ...formats: [...formats: Required<Parameters<Exclude<Omit<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
@@ -30,6 +30,7 @@ export declare const TypeError: {
         MESSAGE_CODE_MISSING_FORMATS: (code?: string, required?: number, received?: number) => string;
         METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
+        READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
@@ -49,7 +50,7 @@ export declare const TypeError: {
         stack?: string;
         cause?: unknown;
     };
-    new <Code_1 extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options_1 extends Omit<ErrorOptions, "cause"> & {
+    new <Code_1 extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "READONLY_PROPERTY_DELETE" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options_1 extends Omit<ErrorOptions, "cause"> & {
         cause?: Error;
     } = {}>(code: Code_1, ...formats_0: Required<Parameters<Exclude<Omit<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
@@ -57,6 +58,7 @@ export declare const TypeError: {
         MESSAGE_CODE_MISSING_FORMATS: (code?: string, required?: number, received?: number) => string;
         METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
+        READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
@@ -99,7 +101,7 @@ export declare const TypeError: {
     prepareStackTrace?: ((err: Error, stackTraces: NodeJS.CallSite[]) => any) | undefined;
     stackTraceLimit: number;
 } & Omit<RangeErrorConstructor, "prototype"> & Error & {
-    new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options extends Omit<ErrorOptions, "cause"> & {
+    new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "READONLY_PROPERTY_DELETE" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options extends Omit<ErrorOptions, "cause"> & {
         cause?: Error;
     } = {}>(code: Code, ...formats: [...formats: Required<Parameters<Exclude<Omit<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
@@ -107,6 +109,7 @@ export declare const TypeError: {
         MESSAGE_CODE_MISSING_FORMATS: (code?: string, required?: number, received?: number) => string;
         METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
+        READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
@@ -126,7 +129,7 @@ export declare const TypeError: {
         stack?: string;
         cause?: unknown;
     };
-    new <Code_1 extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options_1 extends Omit<ErrorOptions, "cause"> & {
+    new <Code_1 extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "READONLY_PROPERTY_DELETE" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options_1 extends Omit<ErrorOptions, "cause"> & {
         cause?: Error;
     } = {}>(code: Code_1, ...formats_0: Required<Parameters<Exclude<Omit<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
@@ -134,6 +137,7 @@ export declare const TypeError: {
         MESSAGE_CODE_MISSING_FORMATS: (code?: string, required?: number, received?: number) => string;
         METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
+        READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
@@ -176,7 +180,7 @@ export declare const TypeError: {
     prepareStackTrace?: ((err: Error, stackTraces: NodeJS.CallSite[]) => any) | undefined;
     stackTraceLimit: number;
 } & Omit<ReferenceErrorConstructor, "prototype"> & Error & {
-    new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options extends Omit<ErrorOptions, "cause"> & {
+    new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "READONLY_PROPERTY_DELETE" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options extends Omit<ErrorOptions, "cause"> & {
         cause?: Error;
     } = {}>(code: Code, ...formats: [...formats: Required<Parameters<Exclude<Omit<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
@@ -184,6 +188,7 @@ export declare const TypeError: {
         MESSAGE_CODE_MISSING_FORMATS: (code?: string, required?: number, received?: number) => string;
         METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
+        READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
@@ -203,7 +208,7 @@ export declare const TypeError: {
         stack?: string;
         cause?: unknown;
     };
-    new <Code_1 extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options_1 extends Omit<ErrorOptions, "cause"> & {
+    new <Code_1 extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "READONLY_PROPERTY_DELETE" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options_1 extends Omit<ErrorOptions, "cause"> & {
         cause?: Error;
     } = {}>(code: Code_1, ...formats_0: Required<Parameters<Exclude<Omit<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
@@ -211,6 +216,7 @@ export declare const TypeError: {
         MESSAGE_CODE_MISSING_FORMATS: (code?: string, required?: number, received?: number) => string;
         METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
+        READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
@@ -253,7 +259,7 @@ export declare const TypeError: {
     prepareStackTrace?: ((err: Error, stackTraces: NodeJS.CallSite[]) => any) | undefined;
     stackTraceLimit: number;
 } & Omit<ErrorConstructor, "prototype"> & Error & {
-    new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options extends Omit<ErrorOptions, "cause"> & {
+    new <Code extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "READONLY_PROPERTY_DELETE" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options extends Omit<ErrorOptions, "cause"> & {
         cause?: Error;
     } = {}>(code: Code, ...formats: [...formats: Required<Parameters<Exclude<Omit<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
@@ -261,6 +267,7 @@ export declare const TypeError: {
         MESSAGE_CODE_MISSING_FORMATS: (code?: string, required?: number, received?: number) => string;
         METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
+        READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
@@ -280,7 +287,7 @@ export declare const TypeError: {
         stack?: string;
         cause?: unknown;
     };
-    new <Code_1 extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options_1 extends Omit<ErrorOptions, "cause"> & {
+    new <Code_1 extends "ERROR_CLASS_ALREADY_EXTENDED" | "INVALID_MESSAGE_CODE" | "MESSAGE_CODE_MISSING_FORMATS" | "METHOD_NOT_IMPLEMENTED" | "READONLY_PROPERTY_SET" | "READONLY_PROPERTY_DELETE" | "OBJECT_NOT_EXTENSIBLE" | "CANNOT_ADD_OBJECT_PROPERTY" | "VALUE_OUT_OF_RANGE", Options_1 extends Omit<ErrorOptions, "cause"> & {
         cause?: Error;
     } = {}>(code: Code_1, ...formats_0: Required<Parameters<Exclude<Omit<{
         ERROR_CLASS_ALREADY_EXTENDED: (Class: import("./types").ErrorClass) => string;
@@ -288,6 +295,7 @@ export declare const TypeError: {
         MESSAGE_CODE_MISSING_FORMATS: (code?: string, required?: number, received?: number) => string;
         METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
+        READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;

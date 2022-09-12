@@ -5,6 +5,7 @@ declare const messages: {
     MESSAGE_CODE_MISSING_FORMATS: (code?: string, required?: number, received?: number) => string;
     METHOD_NOT_IMPLEMENTED: (Class: Function, name?: string) => string;
     READONLY_PROPERTY_SET: (object: any, key: number | string | symbol) => string;
+    READONLY_PROPERTY_DELETE: (object: any, key: number | string | symbol) => string;
     OBJECT_NOT_EXTENSIBLE: (object: any, key: number | string | symbol) => string;
     CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: number | string | symbol) => string;
     VALUE_OUT_OF_RANGE: (value: bigint | number, min: bigint | number, max: bigint | number) => string;
