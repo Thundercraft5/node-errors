@@ -32,7 +32,7 @@ export declare const TypeError: {
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
         READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_PROPERTY_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
-        OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
+        OBJECT_NOT_EXTENSIBLE: (object: any) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
     }, "TypeError" | "RangeError" | "ReferenceError" | "Error">[Code], string>>>, options: Options]): {
@@ -61,7 +61,7 @@ export declare const TypeError: {
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
         READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_PROPERTY_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
-        OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
+        OBJECT_NOT_EXTENSIBLE: (object: any) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
     }, "TypeError" | "RangeError" | "ReferenceError" | "Error">[Code_1], string>>>): {
@@ -113,7 +113,7 @@ export declare const TypeError: {
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
         READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_PROPERTY_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
-        OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
+        OBJECT_NOT_EXTENSIBLE: (object: any) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
     }, "TypeError" | "RangeError" | "ReferenceError" | "Error">[Code], string>>>, options: Options]): {
@@ -142,7 +142,7 @@ export declare const TypeError: {
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
         READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_PROPERTY_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
-        OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
+        OBJECT_NOT_EXTENSIBLE: (object: any) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
     }, "TypeError" | "RangeError" | "ReferenceError" | "Error">[Code_1], string>>>): {
@@ -194,7 +194,7 @@ export declare const TypeError: {
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
         READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_PROPERTY_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
-        OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
+        OBJECT_NOT_EXTENSIBLE: (object: any) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
     }, "TypeError" | "RangeError" | "ReferenceError" | "Error">[Code], string>>>, options: Options]): {
@@ -223,7 +223,7 @@ export declare const TypeError: {
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
         READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_PROPERTY_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
-        OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
+        OBJECT_NOT_EXTENSIBLE: (object: any) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
     }, "TypeError" | "RangeError" | "ReferenceError" | "Error">[Code_1], string>>>): {
@@ -275,7 +275,7 @@ export declare const TypeError: {
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
         READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_PROPERTY_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
-        OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
+        OBJECT_NOT_EXTENSIBLE: (object: any) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
     }, "TypeError" | "RangeError" | "ReferenceError" | "Error">[Code], string>>>, options: Options]): {
@@ -304,7 +304,7 @@ export declare const TypeError: {
         READONLY_PROPERTY_SET: (object: any, key: string | number | symbol) => string;
         READONLY_PROPERTY_DELETE: (object: any, key: string | number | symbol) => string;
         OBJECT_PROPERTY_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
-        OBJECT_NOT_EXTENSIBLE: (object: any, key: string | number | symbol) => string;
+        OBJECT_NOT_EXTENSIBLE: (object: any) => string;
         CANNOT_ADD_OBJECT_PROPERTY: (value: any, key: string | number | symbol) => string;
         VALUE_OUT_OF_RANGE: (value: number | bigint, min: number | bigint, max: number | bigint) => string;
     }, "TypeError" | "RangeError" | "ReferenceError" | "Error">[Code_1], string>>>): {
