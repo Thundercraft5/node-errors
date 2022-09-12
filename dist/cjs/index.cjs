@@ -82,7 +82,7 @@ List of valid codes: ${validCodes}`,
   READONLY_PROPERTY_SET: (object, key) => `Cannot assign to read only property '${String(key)}' of object '${toRepresentation(object, false)}'`,
   OBJECT_NOT_EXTENSIBLE: (object, key) => `Cannot add property '${String(key)}', object '${toRepresentation(object)} is not extensible'`,
   CANNOT_ADD_OBJECT_PROPERTY: (value, key) => `Cannot add property '${String(key)}' on ${typeof value} '${toRepresentation(value)}'`,
-  VALUE_OUT_OF_RANGE: (value, min, max) => `Value "${value} is out of range. Values must be in the range of "${min}" to "${max}"`
+  VALUE_OUT_OF_RANGE: (value, min, max) => `Value "${value} is out of range. Values must be in the range of "${min}" to "${max}".`
 };
 var nativeMessages_default = messages;
 
