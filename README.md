@@ -1,3 +1,7 @@
+---
+Created: 20[[24-04-13]]T10:16
+Edited: 2024-10-29T17:32
+---
 **`node-errors`** is a library that streamlines the creation and management of message-coded errors. *Has 0 dependencies!*
 
 # Usage
